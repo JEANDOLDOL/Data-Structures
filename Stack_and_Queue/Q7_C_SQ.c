@@ -104,7 +104,29 @@ int main()
 ////////////////////////////////////////////////////////////
 int balanced(char *expression)
 {
-/* add your code here */
+	Stack st;
+	st.ll.head = NULL;
+	st.ll.size = 0;
+	while (*expression != '\0'){
+		if(*expression == '{' || *expression == '[' || *expression == '('){
+			push(&st,*expression);
+		}
+		else if(*expression == '}' || *expression == ']' || *expression == ')'){
+			if (isEmptyStack(&st)) {
+                return 1; // 닫는 괄호가 더 많은 경우
+            }
+            char a = pop(&st);
+            if ((*expression == '}' && a != '{') ||
+                (*expression == ']' && a != '[') ||
+                (*expression == ')' && a != '(')) {
+                return 1; // 괄호가 맞지 않는 경우
+            }
+		}
+		expression++;
+	}
+	if (st.ll.size == 0){
+		return 0;
+	}
 }
 
 ////////////////////////////////////////////////////////////

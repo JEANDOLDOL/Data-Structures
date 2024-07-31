@@ -93,8 +93,23 @@ int main()
 
 void levelOrderTraversal(BSTNode* root)
 {
+    Queue q;
+	q.head = NULL;
+	q.tail = NULL;
+	// while문의 조건이 큐가 빌때까지 반복이므로 맨 처음 큐에는 루트 값을 미리 넣어둠.
+	enqueue(&(q.head),&(q.tail),root);
+	while(q.head != NULL){
+		//디큐 값을 루트로 하고 좌우 노드를 인큐
+		root = dequeue(&q.head,&q.tail);
+		printf("%d ",root->item);	
+		if(root->left != NULL){
+			enqueue(&q.head,&q.tail,root->left);
+		}
+		if(root->right	!= NULL){
+			enqueue(&q.head,&q.tail,root->right);
+		}
+	}
 
-    /* add your code here */
 }
 
 ///////////////////////////////////////////////////////////////////////////////

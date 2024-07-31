@@ -42,7 +42,6 @@ int main()
 {
 	int c, i, j;
 	c = 1;
-
 	LinkedList ll;
 	//Initialize the linked list 1 as an empty linked list
 	ll.head = NULL;
@@ -88,7 +87,32 @@ int main()
 
 int moveMaxToFront(ListNode **ptrHead)
 {
-    /* add your code here */
+    ListNode *temp = *ptrHead;
+	ListNode *next = *ptrHead;
+	ListNode *cur, *pre;
+	int bigone = temp->item;
+	int cnt, targret = 0;
+	while (1){
+		if(temp->next == NULL){
+			pre->next = pre->next->next;
+			cur->next = next;
+			*ptrHead = cur;
+
+			
+			return 1;
+		}
+		if(bigone < temp->next->item){
+			bigone = temp->next->item;
+			cur = temp->next;
+			pre = temp;
+			temp = temp->next;
+		}
+		else if(bigone >= temp->next->item){
+			temp = temp->next;
+		}
+	}
+
+	return 1;
 }
 
 //////////////////////////////////////////////////////////////////////////////////

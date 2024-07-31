@@ -101,8 +101,16 @@ int main()
 //////////////////////////////////////////////////////////////////////////////////
 
 int smallestValue(BTNode *node)
-{
-	/* add your code here */
+{   
+    // null일때 엄청 큰 값을 반환 sys.max뭐시기랑 같은 용도.
+    if (node == NULL){
+        return 12121212;
+    }
+    int a = smallestValue(node->left);
+    int b = smallestValue(node->right);
+
+    //노드, 왼-자, 오-자 중 제일 작은것 반환.
+    return ((node->item<a?node->item:a)<b?(node->item<a?node->item:a):b);
 }
 
 //////////////////////////////////////////////////////////////////////////////////
